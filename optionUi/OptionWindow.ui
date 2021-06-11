@@ -1,0 +1,1558 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>OptionWindow</class>
+ <widget class="QDialog" name="OptionWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>826</width>
+    <height>490</height>
+   </rect>
+  </property>
+  <property name="font">
+   <font>
+    <family>微软雅黑</family>
+    <kerning>true</kerning>
+   </font>
+  </property>
+  <property name="windowTitle">
+   <string>Preferences</string>
+  </property>
+  <layout class="QHBoxLayout" name="horizontalLayout_4">
+   <item>
+    <layout class="QHBoxLayout" name="horizontalLayout">
+     <item>
+      <layout class="QVBoxLayout" name="verticalLayout_3">
+       <item>
+        <widget class="QListWidget" name="listClass">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Preferred" vsizetype="Expanding">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="minimumSize">
+          <size>
+           <width>150</width>
+           <height>0</height>
+          </size>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>150</width>
+           <height>16777215</height>
+          </size>
+         </property>
+         <property name="font">
+          <font>
+           <pointsize>12</pointsize>
+          </font>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">QListWidget::Item{padding-top:5px; padding-bottom:5px;color: rgb(241, 241, 241); }
+QListWidget::Item:hover{background:rgba(0, 0, 0, 50); }
+QListWidget::item:selected{background:rgba(0, 0, 0, 100) }
+QListWidget{background-color: rgb(63, 153, 224);outline:0px;}</string>
+         </property>
+         <property name="currentRow">
+          <number>0</number>
+         </property>
+         <item>
+          <property name="text">
+           <string>General</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>Encoding</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>Licensing</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>About</string>
+          </property>
+         </item>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLabel" name="lblSaved">
+         <property name="styleSheet">
+          <string notr="true"/>
+         </property>
+         <property name="text">
+          <string/>
+         </property>
+         <property name="pixmap">
+          <pixmap resource="res.qrc">:/icon/Success.png</pixmap>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignCenter</set>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </item>
+     <item>
+      <widget class="QTabWidget" name="tabWidget">
+       <property name="font">
+        <font>
+         <family>微软雅黑</family>
+         <kerning>true</kerning>
+        </font>
+       </property>
+       <property name="tabPosition">
+        <enum>QTabWidget::North</enum>
+       </property>
+       <property name="tabShape">
+        <enum>QTabWidget::Rounded</enum>
+       </property>
+       <property name="currentIndex">
+        <number>2</number>
+       </property>
+       <property name="documentMode">
+        <bool>false</bool>
+       </property>
+       <property name="tabsClosable">
+        <bool>false</bool>
+       </property>
+       <property name="tabBarAutoHide">
+        <bool>false</bool>
+       </property>
+       <widget class="QWidget" name="General">
+        <attribute name="title">
+         <string>General</string>
+        </attribute>
+        <layout class="QVBoxLayout" name="verticalLayout_2">
+         <item>
+          <widget class="QGroupBox" name="groupBox">
+           <property name="font">
+            <font>
+             <family>微软雅黑</family>
+             <kerning>true</kerning>
+            </font>
+           </property>
+           <property name="title">
+            <string>Hotkey</string>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignCenter</set>
+           </property>
+           <property name="flat">
+            <bool>true</bool>
+           </property>
+           <layout class="QHBoxLayout" name="horizontalLayout_3">
+            <item>
+             <widget class="QLabel" name="label_14">
+              <property name="text">
+               <string>Recode/Stop:</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="KeySequenceEdit" name="OptHotkeyRecord">
+              <property name="sizePolicy">
+               <sizepolicy hsizetype="Fixed" vsizetype="Minimum">
+                <horstretch>0</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
+              </property>
+              <property name="minimumSize">
+               <size>
+                <width>140</width>
+                <height>20</height>
+               </size>
+              </property>
+              <property name="maximumSize">
+               <size>
+                <width>140</width>
+                <height>16777215</height>
+               </size>
+              </property>
+              <property name="font">
+               <font>
+                <family>微软雅黑</family>
+                <pointsize>11</pointsize>
+                <weight>75</weight>
+                <bold>true</bold>
+                <kerning>true</kerning>
+               </font>
+              </property>
+              <property name="styleSheet">
+               <string notr="true"/>
+              </property>
+              <property name="text">
+               <string>setStyleSheet</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QPushButton" name="pushButton">
+              <property name="text">
+               <string/>
+              </property>
+              <property name="icon">
+               <iconset resource="res.qrc">
+                <normaloff>:/icon/Delete.png</normaloff>:/icon/Delete.png</iconset>
+              </property>
+              <property name="iconSize">
+               <size>
+                <width>20</width>
+                <height>20</height>
+               </size>
+              </property>
+              <property name="flat">
+               <bool>true</bool>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QLabel" name="label_3">
+              <property name="text">
+               <string>Pause/Continue:</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="KeySequenceEdit" name="OptHotkeyPause">
+              <property name="sizePolicy">
+               <sizepolicy hsizetype="Fixed" vsizetype="Minimum">
+                <horstretch>0</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
+              </property>
+              <property name="minimumSize">
+               <size>
+                <width>140</width>
+                <height>20</height>
+               </size>
+              </property>
+              <property name="maximumSize">
+               <size>
+                <width>140</width>
+                <height>16777215</height>
+               </size>
+              </property>
+              <property name="font">
+               <font>
+                <family>微软雅黑</family>
+                <pointsize>11</pointsize>
+                <weight>75</weight>
+                <bold>true</bold>
+                <kerning>true</kerning>
+               </font>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QPushButton" name="pushButton_2">
+              <property name="text">
+               <string/>
+              </property>
+              <property name="icon">
+               <iconset resource="res.qrc">
+                <normaloff>:/icon/Delete.png</normaloff>:/icon/Delete.png</iconset>
+              </property>
+              <property name="iconSize">
+               <size>
+                <width>20</width>
+                <height>20</height>
+               </size>
+              </property>
+              <property name="default">
+               <bool>false</bool>
+              </property>
+              <property name="flat">
+               <bool>true</bool>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </widget>
+         </item>
+         <item>
+          <widget class="QGroupBox" name="groupBox_5">
+           <property name="title">
+            <string/>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignCenter</set>
+           </property>
+           <property name="flat">
+            <bool>true</bool>
+           </property>
+           <layout class="QGridLayout" name="gridLayout_2">
+            <item row="6" column="0" colspan="5">
+             <layout class="QHBoxLayout" name="horizontalLayout_7">
+              <item>
+               <widget class="QLabel" name="label_7">
+                <property name="text">
+                 <string>Save name:  </string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QLineEdit" name="OptFileTimeFormat"/>
+              </item>
+              <item>
+               <widget class="QLabel" name="lblTimeFormatPre">
+                <property name="minimumSize">
+                 <size>
+                  <width>180</width>
+                  <height>0</height>
+                 </size>
+                </property>
+                <property name="text">
+                 <string/>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </item>
+            <item row="3" column="0" colspan="4">
+             <layout class="QHBoxLayout" name="horizontalLayout_10">
+              <item>
+               <widget class="QLabel" name="label_21">
+                <property name="text">
+                 <string>Max FPS：</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QSpinBox" name="OptMaxFPS">
+                <property name="minimum">
+                 <number>1</number>
+                </property>
+                <property name="maximum">
+                 <number>100</number>
+                </property>
+                <property name="value">
+                 <number>20</number>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <spacer name="horizontalSpacer_5">
+                <property name="orientation">
+                 <enum>Qt::Horizontal</enum>
+                </property>
+                <property name="sizeHint" stdset="0">
+                 <size>
+                  <width>40</width>
+                  <height>20</height>
+                 </size>
+                </property>
+               </spacer>
+              </item>
+             </layout>
+            </item>
+            <item row="0" column="3">
+             <spacer name="horizontalSpacer">
+              <property name="orientation">
+               <enum>Qt::Horizontal</enum>
+              </property>
+              <property name="sizeHint" stdset="0">
+               <size>
+                <width>40</width>
+                <height>20</height>
+               </size>
+              </property>
+             </spacer>
+            </item>
+            <item row="2" column="0" colspan="5">
+             <layout class="QHBoxLayout" name="horizontalLayout_8">
+              <item>
+               <widget class="QCheckBox" name="OptAutoCleanFile">
+                <property name="text">
+                 <string>Automatic cleanup history</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QCheckBox" name="OptOnlyCleanOvertimeFile">
+                <property name="text">
+                 <string>Clean only  history older than </string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QSpinBox" name="OptCleanFileOverdays">
+                <property name="maximum">
+                 <number>999</number>
+                </property>
+                <property name="value">
+                 <number>0</number>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QLabel" name="label_15">
+                <property name="text">
+                 <string>days</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <spacer name="horizontalSpacer_2">
+                <property name="orientation">
+                 <enum>Qt::Horizontal</enum>
+                </property>
+                <property name="sizeHint" stdset="0">
+                 <size>
+                  <width>40</width>
+                  <height>20</height>
+                 </size>
+                </property>
+               </spacer>
+              </item>
+             </layout>
+            </item>
+            <item row="5" column="0" colspan="5">
+             <layout class="QHBoxLayout" name="horizontalLayout_6">
+              <item>
+               <widget class="QLabel" name="label_6">
+                <property name="text">
+                 <string>History path:</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QLineEdit" name="OptHistoryFilePath_2">
+                <property name="readOnly">
+                 <bool>true</bool>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QPushButton" name="OptHistoryFilePath">
+                <property name="text">
+                 <string>Change Folder</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QPushButton" name="btnOpenFloder">
+                <property name="text">
+                 <string>Open Folder</string>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </item>
+            <item row="0" column="1">
+             <widget class="QCheckBox" name="OptCloseAfterCopy">
+              <property name="text">
+               <string>Close after copy</string>
+              </property>
+             </widget>
+            </item>
+            <item row="0" column="0">
+             <widget class="QCheckBox" name="OptKeepLastPos">
+              <property name="text">
+               <string>Keep last shot position</string>
+              </property>
+             </widget>
+            </item>
+            <item row="0" column="2">
+             <widget class="QCheckBox" name="OptCloseAfterSave">
+              <property name="text">
+               <string>Close after saved</string>
+              </property>
+             </widget>
+            </item>
+            <item row="9" column="0" colspan="4">
+             <layout class="QHBoxLayout" name="horizontalLayout_12">
+              <item>
+               <widget class="QLabel" name="label_19">
+                <property name="text">
+                 <string>Language:</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QComboBox" name="cmbLanguage">
+                <item>
+                 <property name="text">
+                  <string>English</string>
+                 </property>
+                </item>
+               </widget>
+              </item>
+              <item>
+               <spacer name="horizontalSpacer_7">
+                <property name="orientation">
+                 <enum>Qt::Horizontal</enum>
+                </property>
+                <property name="sizeHint" stdset="0">
+                 <size>
+                  <width>40</width>
+                  <height>20</height>
+                 </size>
+                </property>
+               </spacer>
+              </item>
+             </layout>
+            </item>
+           </layout>
+          </widget>
+         </item>
+         <item>
+          <spacer name="verticalSpacer_3">
+           <property name="orientation">
+            <enum>Qt::Vertical</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>20</width>
+             <height>40</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+        </layout>
+       </widget>
+       <widget class="QWidget" name="Encoding">
+        <attribute name="title">
+         <string>Encoding</string>
+        </attribute>
+        <layout class="QVBoxLayout" name="verticalLayout">
+         <item>
+          <layout class="QGridLayout" name="gridLayout">
+           <item row="4" column="0" colspan="2">
+            <widget class="QGroupBox" name="groupBox_4">
+             <property name="title">
+              <string>WEBP</string>
+             </property>
+             <property name="alignment">
+              <set>Qt::AlignCenter</set>
+             </property>
+             <property name="flat">
+              <bool>true</bool>
+             </property>
+             <property name="checkable">
+              <bool>false</bool>
+             </property>
+             <property name="checked">
+              <bool>false</bool>
+             </property>
+             <layout class="QGridLayout" name="gridLayout_6">
+              <item row="0" column="0">
+               <widget class="QCheckBox" name="OptWebpLossless">
+                <property name="text">
+                 <string>Lossless</string>
+                </property>
+               </widget>
+              </item>
+              <item row="0" column="1">
+               <widget class="QCheckBox" name="OptWebpMultiThread">
+                <property name="text">
+                 <string>Multi Thread</string>
+                </property>
+               </widget>
+              </item>
+              <item row="0" column="2">
+               <widget class="QCheckBox" name="OptWebpMinimizeSize">
+                <property name="text">
+                 <string>MinimizeSize</string>
+                </property>
+               </widget>
+              </item>
+              <item row="2" column="0" colspan="6">
+               <layout class="QHBoxLayout" name="horizontalLayout_5">
+                <item>
+                 <widget class="QLabel" name="lblCompression">
+                  <property name="text">
+                   <string>Compression Level:</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QSpinBox" name="OptWebpQuality_2">
+                  <property name="frame">
+                   <bool>false</bool>
+                  </property>
+                  <property name="readOnly">
+                   <bool>true</bool>
+                  </property>
+                  <property name="buttonSymbols">
+                   <enum>QAbstractSpinBox::NoButtons</enum>
+                  </property>
+                  <property name="maximum">
+                   <number>100</number>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QLabel" name="lblFastest">
+                  <property name="text">
+                   <string>Fastest</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QSlider" name="OptWebpQuality">
+                  <property name="minimum">
+                   <number>0</number>
+                  </property>
+                  <property name="maximum">
+                   <number>100</number>
+                  </property>
+                  <property name="pageStep">
+                   <number>5</number>
+                  </property>
+                  <property name="value">
+                   <number>0</number>
+                  </property>
+                  <property name="orientation">
+                   <enum>Qt::Horizontal</enum>
+                  </property>
+                  <property name="invertedAppearance">
+                   <bool>false</bool>
+                  </property>
+                  <property name="invertedControls">
+                   <bool>false</bool>
+                  </property>
+                  <property name="tickPosition">
+                   <enum>QSlider::NoTicks</enum>
+                  </property>
+                  <property name="tickInterval">
+                   <number>1</number>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QLabel" name="lblSmallest">
+                  <property name="text">
+                   <string>Smallest  </string>
+                  </property>
+                 </widget>
+                </item>
+               </layout>
+              </item>
+              <item row="0" column="3" colspan="2">
+               <widget class="QCheckBox" name="OptWebpAllowMixed">
+                <property name="text">
+                 <string>AllowMixed</string>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </widget>
+           </item>
+           <item row="5" column="0" colspan="2">
+            <spacer name="verticalSpacer">
+             <property name="orientation">
+              <enum>Qt::Vertical</enum>
+             </property>
+             <property name="sizeHint" stdset="0">
+              <size>
+               <width>20</width>
+               <height>40</height>
+              </size>
+             </property>
+            </spacer>
+           </item>
+           <item row="0" column="0" colspan="2">
+            <layout class="QHBoxLayout" name="horizontalLayout_9">
+             <item>
+              <widget class="QLabel" name="label">
+               <property name="text">
+                <string>Recording format:</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QComboBox" name="OptRecordFormat">
+               <item>
+                <property name="text">
+                 <string>GIF(Graphics Interchange Format)</string>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string>PNG(Portable Network Graphics)</string>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string>WebP</string>
+                </property>
+               </item>
+              </widget>
+             </item>
+             <item>
+              <spacer name="horizontalSpacer_3">
+               <property name="orientation">
+                <enum>Qt::Horizontal</enum>
+               </property>
+               <property name="sizeHint" stdset="0">
+                <size>
+                 <width>40</width>
+                 <height>20</height>
+                </size>
+               </property>
+              </spacer>
+             </item>
+            </layout>
+           </item>
+           <item row="2" column="0" colspan="2">
+            <widget class="QGroupBox" name="groupBox_2">
+             <property name="font">
+              <font>
+               <family>微软雅黑</family>
+               <kerning>true</kerning>
+              </font>
+             </property>
+             <property name="title">
+              <string>GIF</string>
+             </property>
+             <property name="alignment">
+              <set>Qt::AlignCenter</set>
+             </property>
+             <property name="flat">
+              <bool>true</bool>
+             </property>
+             <property name="checkable">
+              <bool>false</bool>
+             </property>
+             <property name="checked">
+              <bool>false</bool>
+             </property>
+             <layout class="QGridLayout" name="gridLayout_5">
+              <item row="0" column="2">
+               <widget class="QLabel" name="label_5">
+                <property name="text">
+                 <string>Dither type:</string>
+                </property>
+               </widget>
+              </item>
+              <item row="0" column="1">
+               <widget class="QComboBox" name="OptGifPattleType">
+                <item>
+                 <property name="text">
+                  <string>Global Palette</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Independence Palette</string>
+                 </property>
+                </item>
+               </widget>
+              </item>
+              <item row="0" column="0">
+               <widget class="QLabel" name="label_4">
+                <property name="text">
+                 <string>Pattle type:</string>
+                </property>
+               </widget>
+              </item>
+              <item row="0" column="4">
+               <widget class="QCheckBox" name="OptGifPlayLoop">
+                <property name="text">
+                 <string>Play loop</string>
+                </property>
+               </widget>
+              </item>
+              <item row="0" column="3">
+               <widget class="QComboBox" name="OptGifDitherType">
+                <item>
+                 <property name="text">
+                  <string>Ordered</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Threshold</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Diffuse</string>
+                 </property>
+                </item>
+               </widget>
+              </item>
+             </layout>
+            </widget>
+           </item>
+           <item row="3" column="0" colspan="2">
+            <widget class="QGroupBox" name="groupBox_3">
+             <property name="title">
+              <string>PNG</string>
+             </property>
+             <property name="alignment">
+              <set>Qt::AlignCenter</set>
+             </property>
+             <property name="flat">
+              <bool>true</bool>
+             </property>
+             <property name="checkable">
+              <bool>false</bool>
+             </property>
+             <property name="checked">
+              <bool>false</bool>
+             </property>
+             <layout class="QGridLayout" name="gridLayout_4">
+              <item row="0" column="0" colspan="2">
+               <layout class="QHBoxLayout" name="horizontalLayout_2">
+                <item>
+                 <widget class="QLabel" name="label_8">
+                  <property name="text">
+                   <string>Compression Level:</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QSpinBox" name="OptAPngCompressLevel_2">
+                  <property name="frame">
+                   <bool>false</bool>
+                  </property>
+                  <property name="readOnly">
+                   <bool>true</bool>
+                  </property>
+                  <property name="buttonSymbols">
+                   <enum>QAbstractSpinBox::NoButtons</enum>
+                  </property>
+                  <property name="minimum">
+                   <number>0</number>
+                  </property>
+                  <property name="maximum">
+                   <number>9</number>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QLabel" name="label_9">
+                  <property name="text">
+                   <string>Fastest</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QSlider" name="OptAPngCompressLevel">
+                  <property name="minimum">
+                   <number>0</number>
+                  </property>
+                  <property name="maximum">
+                   <number>9</number>
+                  </property>
+                  <property name="pageStep">
+                   <number>3</number>
+                  </property>
+                  <property name="value">
+                   <number>0</number>
+                  </property>
+                  <property name="orientation">
+                   <enum>Qt::Horizontal</enum>
+                  </property>
+                  <property name="invertedAppearance">
+                   <bool>false</bool>
+                  </property>
+                  <property name="invertedControls">
+                   <bool>false</bool>
+                  </property>
+                  <property name="tickPosition">
+                   <enum>QSlider::NoTicks</enum>
+                  </property>
+                  <property name="tickInterval">
+                   <number>1</number>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QLabel" name="label_10">
+                  <property name="text">
+                   <string> Smallest  </string>
+                  </property>
+                 </widget>
+                </item>
+               </layout>
+              </item>
+             </layout>
+            </widget>
+           </item>
+           <item row="1" column="0">
+            <widget class="QCheckBox" name="OptAddProgressBar">
+             <property name="text">
+              <string>Add progress bar</string>
+             </property>
+            </widget>
+           </item>
+           <item row="1" column="1">
+            <widget class="QCheckBox" name="OptEncoderLater">
+             <property name="text">
+              <string>Delayed encoding</string>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </item>
+        </layout>
+       </widget>
+       <widget class="QWidget" name="Licensing">
+        <attribute name="title">
+         <string>Licensing</string>
+        </attribute>
+        <layout class="QVBoxLayout" name="verticalLayout_4">
+         <item>
+          <layout class="QHBoxLayout" name="horizontalLayout_11">
+           <item>
+            <spacer name="horizontalSpacer_6">
+             <property name="orientation">
+              <enum>Qt::Horizontal</enum>
+             </property>
+             <property name="sizeHint" stdset="0">
+              <size>
+               <width>40</width>
+               <height>20</height>
+              </size>
+             </property>
+            </spacer>
+           </item>
+           <item>
+            <widget class="QPushButton" name="pushButton_3">
+             <property name="text">
+              <string>About Qt</string>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </item>
+         <item>
+          <widget class="QTextBrowser" name="txtLic">
+           <property name="openExternalLinks">
+            <bool>true</bool>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </widget>
+       <widget class="QWidget" name="About">
+        <attribute name="title">
+         <string>About</string>
+        </attribute>
+        <layout class="QGridLayout" name="gridLayout_3">
+         <item row="0" column="1" colspan="2">
+          <widget class="QFrame" name="frame_6">
+           <layout class="QGridLayout" name="gridLayout_7">
+            <item row="0" column="2">
+             <widget class="QLabel" name="label_20">
+              <property name="text">
+               <string/>
+              </property>
+              <property name="pixmap">
+               <pixmap resource="res.qrc">:/icon/buildwithqt.png</pixmap>
+              </property>
+             </widget>
+            </item>
+            <item row="3" column="0" colspan="3">
+             <widget class="QLabel" name="label_2">
+              <property name="font">
+               <font>
+                <family>微软雅黑</family>
+                <pointsize>13</pointsize>
+                <kerning>true</kerning>
+               </font>
+              </property>
+              <property name="text">
+               <string>A powerful and easy to use screen recorder.</string>
+              </property>
+              <property name="alignment">
+               <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+              </property>
+             </widget>
+            </item>
+            <item row="0" column="0">
+             <widget class="QLabel" name="label_17">
+              <property name="font">
+               <font>
+                <family>微软雅黑</family>
+                <pointsize>18</pointsize>
+                <kerning>true</kerning>
+               </font>
+              </property>
+              <property name="text">
+               <string>Dogif</string>
+              </property>
+             </widget>
+            </item>
+            <item row="0" column="1">
+             <spacer name="horizontalSpacer_4">
+              <property name="orientation">
+               <enum>Qt::Horizontal</enum>
+              </property>
+              <property name="sizeHint" stdset="0">
+               <size>
+                <width>40</width>
+                <height>20</height>
+               </size>
+              </property>
+             </spacer>
+            </item>
+            <item row="1" column="0">
+             <widget class="QLabel" name="label_18">
+              <property name="text">
+               <string>Version:V1.2</string>
+              </property>
+             </widget>
+            </item>
+            <item row="2" column="0">
+             <widget class="QLabel" name="label_22">
+              <property name="text">
+               <string>Copyright © 2021 Dogif.top</string>
+              </property>
+             </widget>
+            </item>
+            <item row="1" column="2">
+             <widget class="QPushButton" name="btnCheckUpdate">
+              <property name="text">
+               <string>Check updates</string>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </widget>
+         </item>
+         <item row="0" column="0">
+          <widget class="QLabel" name="label_16">
+           <property name="maximumSize">
+            <size>
+             <width>128</width>
+             <height>128</height>
+            </size>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+           <property name="pixmap">
+            <pixmap resource="res.qrc">:/icon/Dogif.png</pixmap>
+           </property>
+           <property name="scaledContents">
+            <bool>true</bool>
+           </property>
+          </widget>
+         </item>
+         <item row="2" column="0" colspan="3">
+          <spacer name="verticalSpacer_4">
+           <property name="orientation">
+            <enum>Qt::Vertical</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>20</width>
+             <height>40</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+         <item row="1" column="0" colspan="3">
+          <widget class="QTextBrowser" name="textAbout">
+           <property name="openExternalLinks">
+            <bool>true</bool>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </widget>
+      </widget>
+     </item>
+    </layout>
+   </item>
+  </layout>
+ </widget>
+ <customwidgets>
+  <customwidget>
+   <class>KeySequenceEdit</class>
+   <extends>QLineEdit</extends>
+   <header>keysequenceedit.h</header>
+   <slots>
+    <slot>cleanSetting()</slot>
+   </slots>
+  </customwidget>
+ </customwidgets>
+ <resources>
+  <include location="res.qrc"/>
+ </resources>
+ <connections>
+  <connection>
+   <sender>OptOnlyCleanOvertimeFile</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>OptionWindow</receiver>
+   <slot>onOptionChanged(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>565</x>
+     <y>172</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>463</x>
+     <y>0</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>OptAutoCleanFile</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>OptionWindow</receiver>
+   <slot>onOptionChanged(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>361</x>
+     <y>172</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>427</x>
+     <y>5</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>OptCleanFileOverdays</sender>
+   <signal>valueChanged(int)</signal>
+   <receiver>OptionWindow</receiver>
+   <slot>onOptionChanged(int)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>620</x>
+     <y>173</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>593</x>
+     <y>0</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>OptAutoCleanFile</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>OptCleanFileOverdays</receiver>
+   <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>361</x>
+     <y>172</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>620</x>
+     <y>173</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>OptKeepLastPos</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>OptionWindow</receiver>
+   <slot>onOptionChanged(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>344</x>
+     <y>143</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>697</x>
+     <y>235</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>pushButton</sender>
+   <signal>clicked()</signal>
+   <receiver>OptHotkeyRecord</receiver>
+   <slot>cleanSetting()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>479</x>
+     <y>98</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>412</x>
+     <y>98</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>pushButton_2</sender>
+   <signal>clicked()</signal>
+   <receiver>OptHotkeyPause</receiver>
+   <slot>cleanSetting()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>791</x>
+     <y>98</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>724</x>
+     <y>98</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>OptAutoCleanFile</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>OptOnlyCleanOvertimeFile</receiver>
+   <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>361</x>
+     <y>172</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>565</x>
+     <y>172</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>OptFileTimeFormat</sender>
+   <signal>textChanged(QString)</signal>
+   <receiver>OptionWindow</receiver>
+   <slot>onTimeFormatChanged(QString)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>566</x>
+     <y>268</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>694</x>
+     <y>351</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>OptAPngCompressLevel</sender>
+   <signal>valueChanged(int)</signal>
+   <receiver>OptAPngCompressLevel_2</receiver>
+   <slot>setValue(int)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>725</x>
+     <y>218</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>319</x>
+     <y>217</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>OptWebpMinimizeSize</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>OptionWindow</receiver>
+   <slot>onOptionChanged(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>490</x>
+     <y>281</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>435</x>
+     <y>478</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>OptWebpQuality</sender>
+   <signal>valueChanged(int)</signal>
+   <receiver>OptWebpQuality_2</receiver>
+   <slot>setValue(int)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>725</x>
+     <y>310</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>333</x>
+     <y>309</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>OptWebpQuality</sender>
+   <signal>valueChanged(int)</signal>
+   <receiver>OptionWindow</receiver>
+   <slot>onOptionChanged(int)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>725</x>
+     <y>310</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>155</x>
+     <y>478</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>OptWebpAllowMixed</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>OptionWindow</receiver>
+   <slot>onOptionChanged(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>691</x>
+     <y>281</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>624</x>
+     <y>478</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>OptWebpLossless</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>OptionWindow</receiver>
+   <slot>onOptionChanged(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>283</x>
+     <y>281</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>266</x>
+     <y>478</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>OptWebpMultiThread</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>OptionWindow</receiver>
+   <slot>onOptionChanged(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>386</x>
+     <y>281</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>470</x>
+     <y>478</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>OptAPngCompressLevel</sender>
+   <signal>valueChanged(int)</signal>
+   <receiver>OptionWindow</receiver>
+   <slot>onOptionChanged(int)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>725</x>
+     <y>218</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>238</x>
+     <y>478</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>listClass</sender>
+   <signal>currentRowChanged(int)</signal>
+   <receiver>tabWidget</receiver>
+   <slot>setCurrentIndex(int)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>95</x>
+     <y>302</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>410</x>
+     <y>322</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>OptCloseAfterCopy</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>OptionWindow</receiver>
+   <slot>onOptionChanged(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>468</x>
+     <y>143</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>240</x>
+     <y>-3</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>OptCloseAfterSave</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>OptionWindow</receiver>
+   <slot>onOptionChanged(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>598</x>
+     <y>143</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>533</x>
+     <y>-9</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>OptMaxFPS</sender>
+   <signal>valueChanged(int)</signal>
+   <receiver>OptionWindow</receiver>
+   <slot>onOptionChanged(int)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>304</x>
+     <y>204</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>613</x>
+     <y>7</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>pushButton_3</sender>
+   <signal>clicked()</signal>
+   <receiver>OptionWindow</receiver>
+   <slot>aboutQt()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>801</x>
+     <y>70</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>819</x>
+     <y>55</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>OptEncoderLater</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>OptionWindow</receiver>
+   <slot>onOptionChanged(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>801</x>
+     <y>97</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>828</x>
+     <y>113</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>OptAddProgressBar</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>OptionWindow</receiver>
+   <slot>onOptionChanged(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>487</x>
+     <y>97</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>751</x>
+     <y>4</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>OptRecordFormat</sender>
+   <signal>currentIndexChanged(int)</signal>
+   <receiver>OptionWindow</receiver>
+   <slot>onOptionChanged(int)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>484</x>
+     <y>69</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>610</x>
+     <y>280</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>OptGifDitherType</sender>
+   <signal>currentIndexChanged(int)</signal>
+   <receiver>OptionWindow</receiver>
+   <slot>onOptionChanged(int)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>679</x>
+     <y>153</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>527</x>
+     <y>0</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>OptGifPattleType</sender>
+   <signal>currentIndexChanged(int)</signal>
+   <receiver>OptionWindow</receiver>
+   <slot>onOptionChanged(int)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>454</x>
+     <y>153</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>593</x>
+     <y>0</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>cmbLanguage</sender>
+   <signal>currentIndexChanged(QString)</signal>
+   <receiver>OptionWindow</receiver>
+   <slot>onLanguageChanged(QString)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>282</x>
+     <y>299</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>820</x>
+     <y>278</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>OptWebpLossless</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>OptionWindow</receiver>
+   <slot>onLosslessChanged(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>230</x>
+     <y>270</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>895</x>
+     <y>332</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+ <slots>
+  <signal>sigFormatChanged()</signal>
+  <slot>onOptionChanged(int)</slot>
+  <slot>onOptionChanged(bool)</slot>
+  <slot>onTimeFormatChanged(QString)</slot>
+  <slot>onOptionChanged(QString)</slot>
+  <slot>aboutQt()</slot>
+  <slot>onLanguageChanged(QString)</slot>
+  <slot>onLosslessChanged(bool)</slot>
+ </slots>
+</ui>
