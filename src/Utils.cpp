@@ -12,6 +12,9 @@
 #include <windows.h>
 #include <Dwmapi.h>
 #endif
+#include <QNetworkAccessManager>
+#include <QNetworkRequest>
+#include <QNetworkReply>
 bool OpenFolderAndSelectFile(QString pathIn)
 {
 #ifdef Q_OS_WIN
@@ -140,4 +143,13 @@ QRect GetWindowRect(QRect wRect)
 #else
     #todo: support other system
 #endif
+}
+
+void Statistics()
+{
+    qInfo() << "Send statistics request";
+    QNetworkAccessManager *nam = new QNetworkAccessManager();
+    QNetworkRequest request(QUrl("http://clustrmaps.com/map_v2.png?d=OYuiY1LOgGobagdth2c5UhilUqrKEGwFQDoSaNAA5Eg&cl=ffffff"));
+    QNetworkReply* reply = nam->get(request);
+    return;
 }

@@ -42,3 +42,4 @@ bool OpenFolderAndSelectFile(QString pathIn);
 void clearFiles(const QString& path, quint32 overtime_days, QString Exclude);
 QRect GetWindowRect(QRect);
 bool CheckIsEncodeLater(int format = -1);
+void Statistics();

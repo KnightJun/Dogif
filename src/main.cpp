@@ -99,6 +99,7 @@ int main(int argc, char *argv[])
     AnimationShotWidget::setOptionSetting(opt);
     FvUpdater::setOptionSetting(opt);
     CheckUpdate();
+    Statistics();
     QRect pos;
     if(opt->value(_opt_keeplastpos).toBool()){
         pos = opt->value("lastposrect").toRect();
