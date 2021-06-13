@@ -76,4 +76,4 @@ installPath = "./Packing/Install/"
 mapPaths = match_path(depList, p.memory_maps())
 collectFiles(mapPaths, depList, installPath)
 collectFilesAttach(attList, installPath)
-PackToZip(installPath, "./Packing/Output/Dogif.zip", [x for x in depList if x[-1] != '/'])
+PackToZip(installPath, "./Packing/Output/Dogif-v1.0.0.win64.zip", [x for x in depList if x[-1] != '/'])

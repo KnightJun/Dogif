@@ -74,7 +74,7 @@ void InitInfo(){
 
 void CheckUpdate()
 {
-    FvUpdater::sharedUpdater()->SetFeedURL("http://192.168.254.21:8000/Untitled-1.xml");
+    FvUpdater::sharedUpdater()->SetFeedURL("https://raw.githubusercontent.com/knightjun/Dogif/main/Update/Appcast.xml");
     FvUpdater::sharedUpdater()->CheckForUpdatesSilent();
 }
 

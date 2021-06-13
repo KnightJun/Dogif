@@ -19,6 +19,7 @@
 #include <fvupdater.h>
 #include <QLocale>
 #include <Utils.h>
+#include <Version.h>
 
 #include <ui_OptionWindow.h>
 QSettings* mStaticOption = nullptr;
@@ -93,6 +94,7 @@ OptionWindow::OptionWindow(QWidget *parent):QDialog(parent)
     licFile.close();
     
     onLosslessChanged(ui->OptWebpLossless->isChecked());
+    ui->lblVersion->setText(QString("Version:") + STR_Version);
 }
 OptionWindow::~OptionWindow()
 {

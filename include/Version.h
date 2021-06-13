@@ -9,12 +9,12 @@
 #define VER_Version    MAKELONG(MAKEWORD(VER_Major, VER_Minor), VER_Release)
 
 #define _Stringizing(v)    #v
-#define _VerJoin(a, b, c, d)  _Stringizing(a.b.c.d)
+#define _VerJoin(a, b, c)  _Stringizing(a.b.c)
 
 #define STR_BuildDate       __DATE__
 #define STR_BuildTime       __TIME__
 #define STR_BuilDateTime    __DATE__ " " __TIME__
-#define STR_Version         _VerJoin(VER_Major, VER_Minor, VER_Release, VER_Build)
+#define STR_Version         _VerJoin(VER_Major, VER_Minor, VER_Release)
 
 #define STR_AppName         "Dogif"
 #define STR_Author          "Dogif"

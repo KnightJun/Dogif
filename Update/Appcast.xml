@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rss
+	version="1.0"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sparkle="http://www.andymatuschak.org/xml-namespaces/sparkle"
+	xmlns:fervor="https://github.com/pypt/fervor"
+	xmlns:dc="http://purl.org/dc/elements/1.1/">
+
+	<channel>
+		<title>Dogif Changelog</title>
+		<link>https://raw.githubusercontent.com/knightjun/Dogif/main/Update/Appcast.xml</link>
+		<description>Most recent changes with links to updates.</description>
+		<language>en</language>
+		<atom:link href="https://raw.githubusercontent.com/knightjun/Dogif/main/Update/Appcast.xml" rel="self" type="application/rss+xml" />
+
+		<item>
+			<title>Version 1.0 (2 bugs fixed; 3 new features)</title>
+			<pubDate>2021/06/13 23:14:07</pubDate>
+			<guid isPermaLink="true">https://raw.githubusercontent.com/knightjun/Dogif/main/Update/RelNotes.html#v1.0</guid>
+
+			<!-- One of those (<link> is preferred by Fervor, <sparkle:releaseNotesLink> is used by Sparkle) -->
+			<link>https://raw.githubusercontent.com/knightjun/Dogif/main/Update/RelNotes.html#v1.0</link> <!-- or -->
+			<sparkle:releaseNotesLink>https://raw.githubusercontent.com/knightjun/Dogif/main/Update/RelNotes.html#v1.0</sparkle:releaseNotesLink>
+
+			<!--
+				See QtGlobal's QT_OS_* constants for valid platform versions.
+			-->
+
+			<!-- Windows version. -->
+			<enclosure
+				url="https://github.com/knightjun/Dogif/releases/download/v1.0.0/Dogif-v1.0.0.win64.zip"
+				fervor:version="1.0"
+				fervor:platform="Q_OS_WIN32"
+				length="1656492"
+				type="application/octet-stream" />
+
+		</item>
+
+	</channel>
+</rss>
