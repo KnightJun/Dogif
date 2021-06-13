@@ -1,5 +1,6 @@
 <RCC>
   <qresource prefix="icon">
+    <file>github_logo.png</file>
     <file>buildwithqt.png</file>
     <file>Dogif.png</file>
     <file>Delete.png</file>
