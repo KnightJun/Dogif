@@ -34,3 +34,5 @@
 .xmake
 .vscode
 build
+*.zip
+Packing/Install/

@@ -16,7 +16,7 @@
 #include <QFileDialog>
 #include <Utils.h>
 #include <QLabel>
-#include <RobinLog.h>
+#include <qDebug>
 #include <QSystemTrayIcon>
 #include <QMouseEvent>
 #include <QCloseEvent>
@@ -29,7 +29,7 @@ AnimationShotWidget::AnimationShotWidget(const QRect geo, QWidget* parent)
     :DynamicShotWidget(geo, parent)
 {
     connect(&mTimer, &QTimer::timeout, this, &AnimationShotWidget::onTimeout);
-    LOG_INFO("AnimationShotWidget init on thread:{}",  QThread::currentThreadId());
+    qInfo() << "AnimationShotWidget init on thread:" << QThread::currentThreadId();
     mAnimation = new KoiAnimation();
     mKeyHook = new OwlKeyHook();
     mKeyLogLabel = new OwlKeyLogLabel(mKeyHook, this);
@@ -49,7 +49,7 @@ AnimationShotWidget::AnimationShotWidget(const QRect geo, QWidget* parent)
 AnimationShotWidget::~AnimationShotWidget()
 {
     mTimer.stop();
-    LOG_INFO("AnimationShotWidget uninit");
+    qInfo() << ("AnimationShotWidget uninit");
     if (mActBar)mActBar->deleteLater();
     if (mInforBar)mInforBar->deleteLater();
     if (mMouseLogLabel) mMouseLogLabel->deleteLater();
@@ -62,10 +62,10 @@ AnimationShotWidget::~AnimationShotWidget()
     if(mScreenShot) delete mScreenShot;
     if(Opt_Bool(_opt_AutoCleanFile)){
         if(Opt_Bool(_opt_OnlyCleanOvertimeFile)){
-            LOG_INFO("remove history file over {} days", Opt_Int(_opt_CleanFileOverdays));
+            qInfo() << "remove history file over " << Opt_Int(_opt_CleanFileOverdays) << " days";
             clearFiles(Opt_Str(_opt_HistoryFilePath), Opt_Int(_opt_CleanFileOverdays), mDelExclude);
         }else{
-            LOG_INFO("remove all history file.");
+            qInfo() << ("remove all history file.");
             clearFiles(Opt_Str(_opt_HistoryFilePath), 0, mDelExclude);
         }
     }
@@ -77,12 +77,12 @@ static bool hotkeyReg(QString optKey, DeerShortcut **shortPtr)
         *shortPtr = new DeerShortcut(GlobalOption);
         (*shortPtr)->setObjectName(optKey);
     }
-    LOG_INFO("Registe hotkey {} for {}.", Opt_Str(optKey), optKey);
+    qInfo() << "Registe hotkey " << Opt_Str(optKey) << " for " << optKey;
     if(Opt_Str(optKey).isEmpty()) return true;
     if((*shortPtr)->setShortcut(Opt_KeySeq(optKey))){
         return true;
     } else {
-        LOG_WARN("Fail registe hotkey {} for {}.", Opt_Str(optKey), optKey);
+        qInfo() << "Fail registe hotkey " << Opt_Str(optKey) << " for " << optKey;
         return false;
     }
 }
@@ -172,7 +172,7 @@ void AnimationShotWidget::changeStatus(StatusCode status)
 }
 void AnimationShotWidget::statusPrepareRecordSet(bool enable)
 {
-    LOG_INFO("Status PrepareRecord turn to {}", enable);
+    qInfo() << "Status PrepareRecord turn to " << enable;
     if(enable){
         mBtnRecord->setIcon(SalActIcon::Record());
         mPlayedTime = 0;
@@ -183,7 +183,7 @@ void AnimationShotWidget::statusPrepareRecordSet(bool enable)
 }
 void AnimationShotWidget::statusRecordingSet(bool enable)
 {
-    LOG_INFO("Status Recording turn to {}", enable);
+    qInfo() << "Status Recording turn to " << enable;
     mLockGeo = enable;
     if(mScreenShot) delete mScreenShot;
     mScreenShot = GoatScreenshot::Create(
@@ -209,7 +209,7 @@ void AnimationShotWidget::statusRecordingSet(bool enable)
         this->changeBoardColor(mRecordColor);
         KoiFormat format = CheckIsEncodeLater() ? KoiFormat::Dga : (KoiFormat)Opt_Int(_opt_RecordFormat);
         mAnimation->init(generateFilepath(format), format);
-        LOG_INFO("Recoding image to {}, timer inv:{}", mAnimation->fileName(), mRecodeTimeInv);
+        qInfo() << "Recoding image to " << mAnimation->fileName() << "timer inv:" << mRecodeTimeInv;
         mRecordFPS = 0;
         this->staysOnTop(true);
         this->showTaskIcon(false);
@@ -225,11 +225,12 @@ void AnimationShotWidget::statusRecordingSet(bool enable)
         mAnimation->waitForIdle();
         this->changeBoardColor(QColor());
         mRecordFPS = (float)mAnimation->frameCount() * 1000.0 / mAnimation->timeStamp();
-        LOG_INFO("stop recoding. filesize:{}, frame count:{}, time:{}, fps:{})", 
-            FileSizeString(mAnimation->encodedSize()), 
-            mAnimation->frameCount(), mAnimation->timeStamp(), mRecordFPS);
-        LOG_INFO("Frame lost: capture:{}, encode:{}",
-            mLostFrameStats.capture, mLostFrameStats.encode);
+        qInfo() << "stop recoding. filesize:" << FileSizeString(mAnimation->encodedSize()) << 
+           ", frame count:" << mAnimation->frameCount() << 
+           ", time:" << mAnimation->timeStamp() << 
+           ", fps:" << mRecordFPS;
+        qInfo() << "Frame lost: capture:" << mLostFrameStats.capture <<
+        ", encode:" << mLostFrameStats.encode;
         delete mScreenShot;
         mScreenShot = nullptr;
     }
@@ -323,7 +324,7 @@ void AnimationShotWidget::onFrameConverted()
 
 void AnimationShotWidget::statusAnimationPreviewSet(bool enable)
 {
-    LOG_INFO("Status Preview turn to {}", enable);
+    qInfo() << "Status Preview turn to " << enable;
     mLockGeo = enable;
     if(enable){
         mBtnRecord->setIcon(SalActIcon::Return());
@@ -380,7 +381,7 @@ void AnimationShotWidget::onProgressValChangeRequest(int valRequest)
 
 void AnimationShotWidget::statusAnimationPlayingSet(bool enable)
 {
-    LOG_INFO("Status Playing turn to {}", enable);
+    qInfo() << "Status Playing turn to " << enable;
     mLockGeo = enable;
     mBtnPause->setEnabled(enable);
     if(enable){
@@ -416,7 +417,7 @@ void AnimationShotWidget::statusAnimationPlayingSet(bool enable)
             mTimer.start(20);
             mMovie->start();
         }
-        LOG_INFO("mMovie start");
+        qInfo() << ("mMovie start");
         this->staysOnTop(false);
         this->showTaskIcon(true);
     }else{
@@ -440,7 +441,7 @@ void AnimationShotWidget::limitKeyLogRange()
 {
     mKeyLogLabel->move(10, this->height() - 10 - mKeyLogLabel->height());
     mMouseLogLabel->setLimitRect(mShotRect);
-    LOG_DBG("Geometry change to {}, shot rect {}", this->geometry(), mShotRect);
+    qInfo() << "Geometry change to " << this->geometry() << ", shot rect " << mShotRect;
 }
 void AnimationShotWidget::setOptionSetting(QSettings* setting)
 {
@@ -503,13 +504,13 @@ void AnimationShotWidget::pauseAnimition()
 {
     if(mStatus == Recording){
         if(mPausetime){
-            LOG_INFO("Continue recoder.");
+            qInfo() << ("Continue recoder.");
             mStartTime = QDateTime::currentMSecsSinceEpoch() - mPausetime;
             mPausetime = 0;
             this->changeBoardColor(mRecordColor);
             mBtnPause->setIcon(SalActIcon::Pause());
         }else{
-            LOG_INFO("Pause recoder.");
+            qInfo() << ("Pause recoder.");
             mPausetime = QDateTime::currentMSecsSinceEpoch() - mStartTime;
             this->changeBoardColor(mPauseColor);
             mBtnPause->setIcon(SalActIcon::Play());
@@ -630,7 +631,7 @@ void AnimationShotWidget::showInformation(bool enable)
         connect(mBtnFormat, &QPushButton::clicked, this, [&](){
             int val = (Opt_Int(_opt_RecordFormat) + 1) % (Format_Count - 1);
             Opt_SetVal(_opt_RecordFormat, val);
-            LOG_INFO("Set format to {}", KoiAnimation::FormatStr(Opt_Int(_opt_RecordFormat)));
+            qInfo() << "Set format to " << KoiAnimation::FormatStr(Opt_Int(_opt_RecordFormat));
             refreshInfoFormatIcon();
         });
         mEnbOnFinishList.append(mBtnFormat); 
@@ -697,7 +698,7 @@ void AnimationShotWidget::onCopyAction()
 {
     if(mAnimation->fileName().isEmpty()){
         QImage frame = shotOnce();
-        LOG_INFO("Copy static image {} with {}", frame, mShotRect);
+        qInfo() << "Copy static image " << frame << " with " << mShotRect;
         ClipSetImage(frame);
     }else{
         if (mStatus == Recording)return;
@@ -707,7 +708,7 @@ void AnimationShotWidget::onCopyAction()
             cFilename = addFilenameSuffix(cFilename, "_progressbar");
             addProgressBar(mAnimation->fileName(), cFilename, mAnimation->format());
         }
-        LOG_INFO("Copy image file {}, ret : {}.", cFilename, ClipSetFile(cFilename));
+        qInfo() << "Copy image file " << cFilename << ", ret : " << ClipSetFile(cFilename);
         mDelExclude = cFilename;
     }
     if(Opt_Bool(_opt_CloseAfterCopy)){
@@ -754,11 +755,11 @@ void AnimationShotWidget::onSaveAction()
     if(dirpath.isEmpty())return;
     
     if(mAnimation->fileName().isEmpty()){
-        LOG_INFO("Save static image {} with {}", img, mShotRect);
+        qInfo() << "Save static image " << img << " with " << mShotRect;
         img.save(dirpath);
     }else{
         QFile::remove(dirpath);
-        LOG_INFO("Copy image file {} to {}", mAnimation->fileName(), dirpath);
+        qInfo() << "Copy image file "<<mAnimation->fileName()<<" to " << dirpath;
         if(Opt_Bool(_opt_AddProgressBar) && !mIsAddedProgress){
             addProgressBar(mAnimation->fileName(), dirpath, mAnimation->format());
         } else {
@@ -815,7 +816,7 @@ void AnimationShotWidget::actionBarInit()
 
     QPushButton* act = mActBar->addButton(SalActIcon::Location());
     connect(act, &QPushButton::clicked, [&]() {
-        LOG_INFO("Location file {}", mAnimation->fileName());
+        qInfo() << "Location file " << mAnimation->fileName();
         OpenFolderAndSelectFile(mAnimation->fileName());
         });
     act->setEnabled(false);

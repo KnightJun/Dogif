@@ -11,7 +11,7 @@
 #include <QSysInfo>
 #include <QDesktopWidget>
 #include <QScreen>
-#include <RobinLog.h>
+#include <DogifLog.h>
 #include <fvupdater.h>
 #include <Version.h>
 
@@ -32,7 +32,7 @@ bool CheckSecondaryMode(SingleApplication &a, QString &configName)
         a.exit(-1);
         return false;
     }
-    LOG_INFO("Enter secondary mode.");
+    qInfo() << ("Enter secondary mode.");
     QString newConfigName = QDateTime::currentDateTime().toString("dd-MM-yyyy-hh-mm-ss") + "_tmp.ini";
     if(QFile(configName).exists()){
         QFile::copy(configName, newConfigName);
@@ -45,23 +45,21 @@ bool CheckSecondaryMode(SingleApplication &a, QString &configName)
     return true;
 }
 void InitLog() {
-    LOG_INFO("{} {}", QApplication::applicationName(), QApplication::applicationVersion());
-    LOG_INFO("buildAbi: {}", QSysInfo::buildAbi());
-    LOG_INFO("run on: {} [{} {} {}]",
-        QSysInfo::prettyProductName(), 
-        QSysInfo::kernelType(), 
-        QSysInfo::kernelVersion(), 
-        QSysInfo::currentCpuArchitecture());
+    qInfo() <<  QApplication::applicationName() << " " << QApplication::applicationVersion();
+    qInfo() <<  "buildAbi: " << QSysInfo::buildAbi();
+    qInfo() <<  "run on: " << QSysInfo::prettyProductName() << " ["
+        << QSysInfo::kernelType() << " " 
+        << QSysInfo::kernelVersion() << " "
+        << QSysInfo::currentCpuArchitecture() << "]";
     QDesktopWidget *desktopWidget = QApplication::desktop();
-    LOG_INFO("Screen count: {}", desktopWidget->numScreens());
+    qInfo() << "Screen count: " << desktopWidget->numScreens();
     for (size_t i = 0; i < desktopWidget->numScreens(); i++)
     {   
         QScreen *srn = QApplication::screens().at(0);
         qreal dotsPerInch = (qreal)srn->logicalDotsPerInch();
-        LOG_INFO("    {} DPI(log):{} DPI(phy):{}", 
-            desktopWidget->screenGeometry(i),
-            srn->logicalDotsPerInch(),
-            srn->physicalDotsPerInch());
+        qInfo() <<  "    "
+        << desktopWidget->screenGeometry(i) << " DPI(log):"
+        << srn->logicalDotsPerInch() << " DPI(phy):" <<  srn->physicalDotsPerInch();
     }
 }
 
@@ -81,15 +79,14 @@ void CheckUpdate()
 int main(int argc, char *argv[])
 {
     SingleApplication a(argc, argv, true);
-    set_rotating_log("dogif.log");
-    InstallQtLogToRobin();
+    InstallQtLogToRobin("dogif.log");
     InitInfo();
     InitLog();
-    LOG_INFO("Install Crash Handler");
+    qInfo() << ("Install Crash Handler");
     google_breakpad::InstallCrashHandler();
     QString configName = "options.ini";
     CheckSecondaryMode(a, configName);
-    LOG_INFO("set config on {}.", configName);
+    qInfo() << "set config on " << configName;
     QSettings *opt = new QSettings(configName, QSettings::IniFormat);
 /*==========默认设置==========*/
     if(!opt->contains(_opt_keeplastpos)){
@@ -104,8 +101,7 @@ int main(int argc, char *argv[])
     if(opt->value(_opt_keeplastpos).toBool()){
         pos = opt->value("lastposrect").toRect();
     }
-    LOG_INFO("Set {} position:{}", 
-        opt->value(_opt_keeplastpos).toBool() ? "last" : "init", pos);
+    qInfo() <<  "Set " << (opt->value(_opt_keeplastpos).toBool() ? "last" : "init") << " position:" << pos;
     AnimationShotWidget *mainWin = new AnimationShotWidget(pos);
     mainWin->show();
     QApplication::connect(mainWin, &AnimationShotWidget::destroyed, [&](){
@@ -114,10 +110,10 @@ int main(int argc, char *argv[])
         bool SecondaryMode = opt->value(_opt_SecondaryMode).toInt();
         delete opt;
         if(SecondaryMode){
-            LOG_INFO("Remove config file on secondary mode.");
+            qInfo() << ("Remove config file on secondary mode.");
             QFile::remove(configName);
         }
-        LOG_INFO("Exit normal, shot rect : {}.", mainWin->mShotRect);
+        qInfo() << "Exit normal, shot rect : " << mainWin->mShotRect;
         a.quit();
     });
     a.setQuitOnLastWindowClosed(false);

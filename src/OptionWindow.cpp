@@ -15,7 +15,7 @@
 #include <QApplication>
 #include "KeySequenceEdit.h"
 #include "AnimationShotWidget.h"
-#include <RobinLog.h>
+#include <qDebug>
 #include <fvupdater.h>
 #include <QLocale>
 #include <Utils.h>
@@ -126,7 +126,7 @@ void OptionWindow::onOptionChanged(QString newVal)
 {
     QObject *obj = this->sender();
     mStaticOption->setValue(obj->objectName(), newVal);
-    LOG_INFO("Set option[{}] to {}.", obj->objectName(), newVal);
+    qInfo() << "Set option[" << obj->objectName() << "] to " << newVal;
     onSaved();
 }
 
@@ -134,7 +134,7 @@ void OptionWindow::onOptionChanged(int newVal)
 {
     QObject *obj = this->sender();
     mStaticOption->setValue(obj->objectName(), newVal);
-    LOG_INFO("Set option[{}] to {}.", obj->objectName(), newVal);
+    qInfo() << "Set option[" << obj->objectName() << "] to " << newVal;
     onSaved();
     if(obj->objectName() == "OptRecordFormat"){
         emit sigFormatChanged();
@@ -145,7 +145,7 @@ void OptionWindow::onOptionChanged(bool newVal)
 {
     QObject *obj = this->sender();
     mStaticOption->setValue(obj->objectName(), (int)newVal);
-    LOG_INFO("Set option[{}] to {}.", obj->objectName(), newVal);
+    qInfo() << "Set option[" << obj->objectName() << "] to " << newVal;
     onSaved();
 }
 void OptionWindow::on_btnCheckUpdate_clicked()

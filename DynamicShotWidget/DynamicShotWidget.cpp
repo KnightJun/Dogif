@@ -3,12 +3,11 @@
 #include <QApplication>
 #include <QDesktopWidget>
 #include <QScreen>
-#include <qdebug.h>
+#include <qDebug>
 #include <DynamicShotWidget.h>
 #include <OptionWindow.h>
 #include <QMainWindow>
 #include <Utils.h>
-#include <RobinLog.h>
 DynamicShotWidget::DynamicShotWidget(const QRect geo, QWidget* parent)
 	:QMainWindow(parent)
 {
@@ -27,7 +26,7 @@ DynamicShotWidget::DynamicShotWidget(const QRect geo, QWidget* parent)
     this->setWindowFlags(Qt::Tool | Qt::FramelessWindowHint | Qt::WindowStaysOnTopHint);
 	mPen = QPen(mNormalColor, mPenWidth);
 	mPen.setJoinStyle(Qt::MiterJoin);
-    LOG_INFO("DynamicShotWidget Init");
+    qInfo() << ("DynamicShotWidget Init");
 } 
 
 DynamicShotWidget::~DynamicShotWidget()
@@ -65,13 +64,13 @@ void DynamicShotWidget::showTaskIcon(bool enable)
 void DynamicShotWidget::fitsWindow()
 {
     if(mFitsWinFlag){
-        LOG_INFO("restore shot rect to {}", mAdjustRecord);
+        qInfo() << "restore shot rect to " << mAdjustRecord;
         adjustShotRect(mAdjustRecord);
         return;
     }
     QRect geo = this->geometry();
     QRect wRect = GetWindowRect(geo);
-    LOG_INFO("fit shot rect to {}", wRect);
+    qInfo() << "fit shot rect to" << wRect;
     mAdjustRecord = mShotRect;
     if(!wRect.isEmpty()){
         adjustShotRect(wRect);
@@ -148,7 +147,7 @@ void DynamicShotWidget::mouseMoveEvent(QMouseEvent* event)
 	{
         QPoint ptemp = event->globalPos();
         ptemp = ptemp - mPressPoint;
-        if (mZoomFlag == 22)//ÒÆ¶¯´°¿Ú
+        if (mZoomFlag == 22)//ï¿½Æ¶ï¿½ï¿½ï¿½ï¿½ï¿½
         {
             ptemp = ptemp + pos();
             move(ptemp);
@@ -156,17 +155,17 @@ void DynamicShotWidget::mouseMoveEvent(QMouseEvent* event)
         else
         {
             QRect tempRect = geometry();
-            switch (mZoomFlag)//¸Ä±ä´°¿ÚµÄ´óÐ¡
+            switch (mZoomFlag)//ï¿½Ä±ä´°ï¿½ÚµÄ´ï¿½Ð¡
             {
 
-            case 0x11:tempRect.setTopLeft(tempRect.topLeft() + ptemp); break;//×óÉÏ½Ç
-            case 0x31:tempRect.setTopRight(tempRect.topRight() + ptemp); break;//ÓÒÉÏ½Ç
-            case 0x13:tempRect.setBottomLeft(tempRect.bottomLeft() + ptemp); break;//×óÏÂ½Ç
-            case 0x33:tempRect.setBottomRight(tempRect.bottomRight() + ptemp); break;//ÓÒÏÂ½Ç
-            case 0x21:tempRect.setTop(tempRect.top() + ptemp.y()); break;//ÖÐÉÏ½Ç
-            case 0x12:tempRect.setLeft(tempRect.left() + ptemp.x()); break;//ÖÐ×ó½Ç
-            case 0x32:tempRect.setRight(tempRect.right() + ptemp.x()); break;//ÖÐÓÒ½Ç
-            case 0x23:tempRect.setBottom(tempRect.bottom() + ptemp.y()); break;//ÖÐÏÂ½Ç
+            case 0x11:tempRect.setTopLeft(tempRect.topLeft() + ptemp); break;//ï¿½ï¿½ï¿½Ï½ï¿½
+            case 0x31:tempRect.setTopRight(tempRect.topRight() + ptemp); break;//ï¿½ï¿½ï¿½Ï½ï¿½
+            case 0x13:tempRect.setBottomLeft(tempRect.bottomLeft() + ptemp); break;//ï¿½ï¿½ï¿½Â½ï¿½
+            case 0x33:tempRect.setBottomRight(tempRect.bottomRight() + ptemp); break;//ï¿½ï¿½ï¿½Â½ï¿½
+            case 0x21:tempRect.setTop(tempRect.top() + ptemp.y()); break;//ï¿½ï¿½ï¿½Ï½ï¿½
+            case 0x12:tempRect.setLeft(tempRect.left() + ptemp.x()); break;//ï¿½ï¿½ï¿½ï¿½ï¿½
+            case 0x32:tempRect.setRight(tempRect.right() + ptemp.x()); break;//ï¿½ï¿½ï¿½Ò½ï¿½
+            case 0x23:tempRect.setBottom(tempRect.bottom() + ptemp.y()); break;//ï¿½ï¿½ï¿½Â½ï¿½
             }
             if (abs(tempRect.width()) < 16 + mPenWidth * 2)return;
             if (abs(tempRect.height()) < 16 + mPenWidth * 2)return;
@@ -177,7 +176,7 @@ void DynamicShotWidget::mouseMoveEvent(QMouseEvent* event)
             this->onGeometryChanged();
         }
 
-        mPressPoint = event->globalPos();//¸üÐÂÎ»ÖÃ
+        mPressPoint = event->globalPos();//ï¿½ï¿½ï¿½ï¿½Î»ï¿½ï¿½
 	}
 	else {
         if (event->modifiers() & Qt::ControlModifier) {
@@ -199,7 +198,7 @@ void DynamicShotWidget::mouseReleaseEvent(QMouseEvent* event)
 {
 	mIsPress = false;
 }
-void DynamicShotWidget::setCursorType(int flag)//¸ù¾ÝÊó±êËùÔÚÎ»ÖÃ¸Ä±äÊó±êÖ¸ÕëÐÎ×´
+void DynamicShotWidget::setCursorType(int flag)//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Î»ï¿½Ã¸Ä±ï¿½ï¿½ï¿½ï¿½Ö¸ï¿½ï¿½ï¿½ï¿½×´
 {
     Qt::CursorShape cursor;
     switch (flag)
