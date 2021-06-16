@@ -29,7 +29,7 @@ bool CheckSecondaryMode(SingleApplication &a, QString &configName)
                     QMessageBox::information(NULL, QObject::tr("Secondary Mode")
                         , tips, QMessageBox::Yes | QMessageBox::No, QMessageBox::No);
     if(result != QMessageBox::Yes){
-        a.exit(-1);
+        exit(-1);
         return false;
     }
     qInfo() << ("Enter secondary mode.");

@@ -12,7 +12,6 @@ GoatScreenShot.dll
 msvcp140.dll
 vcomp140.dll
 vcruntime140_1.dll
-RobinLog.dll
 platforms\
 platforms\qwindows.dll
 Qt5Svg.dll
@@ -26,6 +25,7 @@ imageformats\qwebp.dll
 imageformats\qapng.dll
 styles\
 styles\qwindowsvistastyle.dll
+CrashDumps\
 
 !lang\
 !lang\zh_cn.qm
