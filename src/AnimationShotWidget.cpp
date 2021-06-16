@@ -42,6 +42,9 @@ AnimationShotWidget::AnimationShotWidget(const QRect geo, QWidget* parent)
     mPlayedTime = 0;
     connect(this, &DynamicShotWidget::SigGeometryChanged, 
         this, &AnimationShotWidget::limitKeyLogRange);
+        
+    connect(this, &DynamicShotWidget::SigGeometryChanged, 
+        [&](){this->updateInformation();} );
     this->actionBarInit();
     this->hotkeyInit();
 }
