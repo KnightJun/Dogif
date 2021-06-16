@@ -9,6 +9,10 @@ rule("c++.debug.symbols")
     end)
     after_build(function (target)
         if target:symbolfile() then
+            ext = path.extension(target:targetfile())
+            if ext ~= ".dll" or ext ~= ".exe" then
+                return
+            end
             symName = target:targetfile()..".sym"
             pdbFileName = path.filename(target:symbolfile())
             os.execv("dump_syms.exe", {target:symbolfile()},{stdout = symName}) 

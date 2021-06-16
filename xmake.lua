@@ -1,6 +1,6 @@
 
 add_rules("mode.debug", "mode.release")
-add_repositories("my-repo git@github.com:knightjun/xmake-repo.git main")
+add_repositories("KnightJun-repo git@github.com:knightjun/xmake-repo.git main")
 
 add_requires("GoatScreenShot main", {debug = is_mode("debug")})
 add_requires("SalmonActions main" , {debug = is_mode("debug")})
