@@ -42,6 +42,9 @@ AnimationShotWidget::AnimationShotWidget(const QRect geo, QWidget* parent)
     mPlayedTime = 0;
     connect(this, &DynamicShotWidget::SigGeometryChanged, 
         this, &AnimationShotWidget::limitKeyLogRange);
+        
+    connect(this, &DynamicShotWidget::SigGeometryChanged, 
+        [&](){this->updateInformation();} );
     this->actionBarInit();
     this->hotkeyInit();
 }
@@ -441,7 +444,7 @@ void AnimationShotWidget::limitKeyLogRange()
 {
     mKeyLogLabel->move(10, this->height() - 10 - mKeyLogLabel->height());
     mMouseLogLabel->setLimitRect(mShotRect);
-    qInfo() << "Geometry change to " << this->geometry() << ", shot rect " << mShotRect;
+    // qInfo() << "Geometry change to " << this->geometry() << ", shot rect " << mShotRect;
 }
 void AnimationShotWidget::setOptionSetting(QSettings* setting)
 {
