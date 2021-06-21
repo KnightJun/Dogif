@@ -392,9 +392,6 @@ void AnimationShotWidget::statusAnimationPlayingSet(bool enable)
         if(mMovie) delete mMovie;
         mMovie = new KoiMovie(this);
         connect(mMovie, &KoiMovie::frameChanged, this,  &AnimationShotWidget::onMoiveFrameChanged);
-        if(mAnimation->format() == KoiFormat::APNG){
-            mMovie->setFormat("apng");
-        }
         mMovie->setFileName(mAnimation->fileName());
 
         mPlayProgress = new PlayProgress(this);
