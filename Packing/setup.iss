@@ -33,6 +33,10 @@ WizardStyle=modern
 Name: "english"; MessagesFile: "compiler:Default.isl"
 Name: "chinesesimplified"; MessagesFile: "compiler:Languages\ChineseSimplified.isl"
 
+[CustomMessages]
+KeepMessage=Do you want to keep your history files and personal settings?
+chinesesimplified.KeepMessage=是否要保留历史文件和个人设置？
+
 [Tasks]
 Name: "desktopicon"; Description: "{cm:CreateDesktopIcon}"; GroupDescription: "{cm:AdditionalIcons}"; Flags: checkablealone
 
@@ -53,7 +57,8 @@ Filename: "{app}\{#MyAppExeName}"; Description: "{cm:LaunchProgram,{#StringChang
 procedure CurUninstallStepChanged(CurUninstallStep: TUninstallStep);
   begin
     if CurUninstallStep = usDone then
-    begin
-    DelTree(ExpandConstant('{app}'), True, True, True);
-    end;
+      if MsgBox(ExpandConstant('{cm:KeepMessage}'), mbConfirmation, MB_YESNO) = IDNO then
+        begin
+        DelTree(ExpandConstant('{app}'), True, True, True);
+        end;
   end;
